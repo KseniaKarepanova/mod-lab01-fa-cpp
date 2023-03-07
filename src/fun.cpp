@@ -24,7 +24,7 @@ unsigned int faStr1(const char *str) {
 		}
 		str++;
 	}
-	return (count-count_with_number);
+	return (count - count_with_number);
 }
 
 unsigned int faStr2(const char *str) {
