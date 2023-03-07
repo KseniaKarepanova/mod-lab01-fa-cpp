@@ -2,91 +2,91 @@
 #include "fun.h"
 
 unsigned int faStr1(const char* str) {
-	int count = 0;
-	int count_with_number = 0;
-	bool with_number = false;
-	bool in_word = false;
-	while (*str) {
-		if ((*str != ' ') && (in_word == false)) {
-			count++;
-			in_word = true;
-		}
-		if ((*str != ' ') && (*str >= '0') && (*str <= '9')) {
-			with_number = true;
-		}
-		if ((*str == ' ') && (in_word == true)) {
-			if (with_number == true) {
-				count_with_number++;
-				in_word = false;
-				with_number = false;
-			} else {
-				in_word = false;
-			}
-		}
-		str++;
-	}
-	return (count - count_with_number);
+    int count = 0;
+    int count_with_number = 0;
+    bool with_number = false;
+    bool in_word = false;
+    while (*str) {
+        if ((*str != ' ') && (in_word == false)) {
+            count++;
+            in_word = true;
+        }
+        if ((*str != ' ') && (*str >= '0') && (*str <= '9')) {
+            with_number = true;
+        }
+        if ((*str == ' ') && (in_word == true)) {
+            if (with_number == true) {
+                count_with_number++;
+                in_word = false;
+                with_number = false;
+            } else {
+                in_word = false;
+            }
+        }
+        str++;
+    }
+    return (count - count_with_number);
 }
 
 unsigned int faStr2(const char* str) {
-	int count = 0;
-	bool first = false;
-	bool flag1 = false;
-	bool flag2 = false;
+    int count = 0;
+    bool first = false;
+    bool flag1 = false;
+    bool flag2 = false;
     bool in_word = false;
-	while (*str) {
-		if ((*str != ' ') && (in_word == false)) {
-			in_word = true;
-			if ((*str >= 'A') && (*str <= 'Z')) {
-				flag1 = true;
-				first = true;
-			}
-		}
-		if (*str != ' ') {
-			if ((flag1 == true) && (in_word == true)) {
-				if (((*str >= 'a') && (*str <= 'z')) || (first == true)) {
-					flag2 = true;
-					if (first == true) {
-						first = false;
-					}
-				} else {
-					flag2 = false;
-				}
-			}
-		}
-		if ((*str == ' ') && (in_word == true)) {
-			if ((flag1 == true) && (flag2 == true)) {
-				count++;
-				in_word = false;
-				flag1 = false;
-				flag2 = false;
-			} else {
-				in_word = false;
-				flag1 = false;
-				flag2 = false;
-			}
-		}
-		str++;
-	}
-	return count;
+    while (*str) {
+        if ((*str != ' ') && (in_word == false)) {
+            in_word = true;
+            if ((*str >= 'A') && (*str <= 'Z')) {
+                flag1 = true;
+                first = true;
+            }
+        }
+        if (*str != ' ') {
+            if ((flag1 == true) && (in_word == true)) {
+                if (((*str >= 'a') && (*str <= 'z')) || (first == true)) {
+                    flag2 = true;
+                    if (first == true) {
+                    first = false;
+                    }
+                } else {
+                    flag2 = false;
+                  }
+            }
+        }
+        if ((*str == ' ') && (in_word == true)) {
+            if ((flag1 == true) && (flag2 == true)) {
+                count++;
+                in_word = false;
+                flag1 = false;
+                flag2 = false;
+            } else {
+                in_word = false;
+                flag1 = false;
+                flag2 = false;
+            }
+        }
+        str++;
+    }
+    return count;
 }
 
 unsigned int faStr3(const char* str) {
-	int count = 0;
-	int length = 0;
-	bool in_word = false;
-	while (*str) {
-		if (*str != ' ') {
-			if (in_word == false) {
-				count++;
-				in_word = true;
-			}
-			length++;
-		}
-		if ((*str == ' ') && (in_word == true)) {
-			in_word = false;
-		}
-		str++;
-	}
-	return (length + 1) / count;
+    int count = 0;
+    int length = 0;
+    bool in_word = false;
+    while (*str) {
+        if (*str != ' ') {
+            if (in_word == false) {
+                count++;
+                in_word = true;
+            }
+            length++;
+        }
+        if ((*str == ' ') && (in_word == true)) {
+            in_word = false;
+        }
+        str++;
+    }
+    return (length + 1) / count;
 }
